@@ -15,12 +15,9 @@ import {
 export async function activate(context: ExtensionContext) {
   // Run on save
   workspace.onDidSaveTextDocument((doc: any) => {
-
-    window.showWarningMessage('Start id')
     // Get editor content
     let editor = window.activeTextEditor
     // Run only for currect editor
-    log('First',(editor && doc == editor.document), 'Editor:', editor, 'Doc:', doc, 'Editor.document: ', window.activeTextEditor)
     if (editor && doc == editor.document) {
       applySyntax(doc)
     }
@@ -37,14 +34,17 @@ export async function applySyntax(doc: any) {
   // Get text
   let syntax = doc.getText(new Range(doc.lineAt(0).range.start, doc.lineAt(textLines).range.end))
   // Regexp syntax=$
-  syntax = syntax.match(/(?<=syntax=)(?:\w+[-.]?)+/g)[0]
-  console.log("Match:",syntax);
-  
+  syntax = syntax.match(/(?<=syntax=)(?:\w+[-.]?)+/g)
+  // If not null
   if (syntax) {
+    // Use only first element
+    syntax = syntax[0]
+    // Check languages id is exists
     if (!(await languages.getLanguages()).includes(syntax)) {
       window.showWarningMessage('Wrong syntax id',syntax)
       return false;
     }
+    // Change language if selected not the same
     if (!languages.match(syntax, doc)) {
       return languages.setTextDocumentLanguage(doc, syntax)
     }
