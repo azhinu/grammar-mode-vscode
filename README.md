@@ -35,6 +35,15 @@ Extension doesn't have any settings.
 
 Users appreciate release notes as you update your extension.
 
+### 0.0.4
+
+- Extension activates on file open
+
+### 0.0.3
+
+- Now supported grammar names starting with `source.`
+- Updated deps
+
 ### 0.0.2
 
 - Removed forgotten debug messages.

@@ -2,7 +2,7 @@
   "name": "grammar-mode",
 	"displayName": "Grammar Mode",
 	"description": "Set grammar for file by adding mode comment, like EMACS",
-  "repository": "https://github.com/azhinu/grammar-move-vscode",
+  "repository": "https://github.com/azhinu/grammar-mode-vscode",
 	"version": "0.0.3",
   "publisher": "azhinu",
 	"engines": {

@@ -22,6 +22,14 @@ export async function activate(context: ExtensionContext) {
       applySyntax(doc)
     }
   })
+  workspace.onDidOpenTextDocument((doc: any) => {
+    // Get editor content
+    let editor = window.activeTextEditor
+    // Run only for currect editor
+    if (editor && doc == editor.document) {
+      applySyntax(doc)
+    }
+  })
 }
 
 
